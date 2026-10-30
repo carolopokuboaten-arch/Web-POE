@@ -8,3 +8,4 @@ Reformatted soical media links for cleaner display
 Enquiry page - header has been reduced 
 Separated footer into styled boxes 
 Appllied consistent colour scheme and hover effects across all pages 
+Added a border around the images on the home page 
