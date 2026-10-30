@@ -12,3 +12,4 @@ Added a border around the images on the home page
 Added a "pastries" banner.
 Updated the enquiry page 
 added a box history section on the about us page to allow the organisation history information aswell as the vision and mission statement to sit in a box 
+Enquiry page , information for users to enquire - a box section is added 
