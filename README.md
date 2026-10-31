@@ -23,4 +23,4 @@ gallery thumbnail borders and hover feature
 accordion styles (open and close animations)
 JAVASCRIPT FEATURES 
 Home Page- special offer button
-
+Contact details changed 
