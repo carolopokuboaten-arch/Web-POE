@@ -24,3 +24,5 @@ accordion styles (open and close animations)
 JAVASCRIPT FEATURES 
 Home Page- special offer button
 Contact details changed 
+Contact Us page --> Has interactive Map showing the location of the place
+
