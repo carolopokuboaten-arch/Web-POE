@@ -15,11 +15,13 @@ Enquiry page , information for users to enquire - a box section is added
 ----**CHANGELOG** Part 3 ----
 Home.html - > welcome message , special offer button 
 Menu.html -> Product listings with a clickable image gallery - lightbox
+
 About.html-> Company information 
 Contact Us.html -> Location , hours and contact details have been added 
 Enquiry.html -> Accordion + enquiry form 
 CSS Styling >>>> Consistent colour theme:soft cream/beige background warm brown text header with logo and naviagtion links responsive styling with hover effects 
 gallery thumbnail borders and hover feature
+Me
 accordion styles (open and close animations)
 JAVASCRIPT FEATURES 
 Home Page- special offer button
