@@ -21,7 +21,8 @@ Contact Us.html -> Location , hours and contact details have been added
 Enquiry.html -> Accordion + enquiry form 
 CSS Styling >>>> Consistent colour theme:soft cream/beige background warm brown text header with logo and naviagtion links responsive styling with hover effects 
 gallery thumbnail borders and hover feature
-Me
+Menu Page --->>> LightBox gallery opens to view picture/product in a larger view 
+
 accordion styles (open and close animations)
 JAVASCRIPT FEATURES 
 Home Page- special offer button
