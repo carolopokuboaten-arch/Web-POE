@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://yourusername.github.io/yourrepo/sitemap.xml
+Sitemap: https://carolopokuboaten-arch.github.io/Web-POE/sitemap.xml
