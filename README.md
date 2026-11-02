@@ -22,6 +22,9 @@ Enquiry.html -> Accordion + enquiry form
 CSS Styling >>>> Consistent colour theme:soft cream/beige background warm brown text header with logo and naviagtion links responsive styling with hover effects 
 gallery thumbnail borders and hover feature
 Menu Page --->>> LightBox gallery opens to view picture/product in a larger view 
+Added meta descriptions on each page 
+Used lowercase, hyphens instead of spaces for  a clean URL structure
+
 
 accordion styles (open and close animations)
 JAVASCRIPT FEATURES 
