@@ -19,7 +19,6 @@ A responsive bakery website for Cream & Batter in Raceway Park, Bloemfontein, bu
 - **Checkout:** the cart appears on the Enquiry page and is sent with the enquiry
 - **Accordion (Enquiry):** expandable sections for opening hours and custom orders
 - **Google Map:** embedded map of the bakery on the Contact page
-- **Social media buttons:** Instagram, Threads and TikTok links that open in a new tab
 - **Responsive design:** layouts adapt to desktop, tablet and phone
 
 ## Forms and JavaScript validation
@@ -52,19 +51,6 @@ A responsive bakery website for Cream & Batter in Raceway Park, Bloemfontein, bu
 - Scripts placed at the bottom of the page
 - Unused code removed (old Leaflet map code)
 - Images compressed
-
-## Security
-- HTTPS provided by GitHub Pages (Enforce HTTPS ticked)
-- External links use rel="noopener noreferrer"
-- User input shown with textContent, not innerHTML
-- All form input validated in JavaScript before use
-- No passwords or private keys in the code
-
-## Promotion
-- Website link added to the Instagram, TikTok and Threads profiles
-- Posts with hashtags (#Bloemfontein #bakery #cupcakes) linking to the site
-- Link shared with friends and family on WhatsApp
-- Social buttons on the website link back to the profiles
 
 ## Bug fixes made along the way
 - Renamed files to lowercase, hyphenated names and updated every link
