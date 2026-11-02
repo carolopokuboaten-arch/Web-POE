@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us |Cream & Batter in Bloemfontein</title>
+    <meta name="description" content="Contact Cream & Batter in Raceway Park,Bloemfontein.Send us a message,find our address,phone number and social media.">
+    <link rel="canonical"href="">
+    <link rel="stylesheet" href="style.css "> 
+
+
+</head>    
+<body>
+     <!---SIDEBAR-->
+        <div class ="sidebar">
+            <div class ="sidebar-logo">Cream & Batter</div>
+            <nav class = "sidebar-logo">
+                <a href="index.html">Home</a>
+                <a href="menu.html">Menu </a>
+                <a href="about.html"> About us </a>
+                <a href="contact.html" class="active">Contact Us</a>
+                <a href="enquiry.html">Enquiry</a>
+            </nav>
+        </div>
+        
+        <div class ="main-content" >
+            <h2>Where Are We Located</h2> 
+            <div class="map-container">
+    
+    
+        <h2 style="text-align: center;">Find Us</h2>
+    <iframe title="Map showing the Cream and Batter location" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3485.6151048784454!2d26.281744175209454!3d-29.117042488892924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e8fcfb2a7c717d7%3A0x82dee6eaf4df9a4d!2sRaceway%20Park!5e0!3m2!1sen!2sza!4v1793480463087!5m2!1sen!2sza" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe> 
+
+    <p>First house on your right</p>
+    <p>Cream & Batter — 36567 Raceway Park Street , Royal Chalice Street , Raceway park , Bloemfontein , 9301</p>
+</div>
+
+    <h1>Contact Us</h1>
+
+    <p>Follow our soicals :</p>
+<br>
+    <h2>Social Media</h2>
+    <ul>
+        <li>Instagram: @creamandbatter</li>
+        <li>Threads: Cream & Batter</li>
+        <li>TikTok: @creamandbatter</li>
+    </ul>
+<br>
+    <h4>Email Us </h4>
+    <p>Email: ivyshy@gmail.com</p>
+    <p>Tel: 052 943 6789</p>
+    <p>Phone: 079 123 6793</p>
+    
+
+  <form id="contactForm" novalidate>
+    <label for="cname">Name</label>
+    <input type="text" id="cname" required minlength="2">
+    <div class="error" id="cnameErr"></div>
+
+    <label for="cemail">Email</label>
+    <input type="email" id="cemail" required>
+    <div class="error" id="cemailErr"></div>
+
+    <label for="cphone">Phone</label>
+    <input type="tel" id="cphone" required maxlength="10">
+    <div class="error" id="cphoneErr"></div>
+
+    <label for="ctype">Type of message</label>
+    <select id="ctype" required>
+      <option value="">-- choose --</option>
+      <option>General question</option><option>Feedback</option>
+      <option>Complaint</option><option>Compliment</option>
+    </select>
+    <div class="error" id="ctypeErr"></div>
+
+    <label for="cmsg">Message</label>
+    <textarea id="cmsg" required minlength="10" maxlength="500"></textarea>
+    <div class="error" id="cmsgErr"></div>
+
+    <button class="btn" type="submit">Compile Email</button>
+  </form>
+  <div id="preview" class="response" hidden></div>
+<script>
+const RECIPIENT = "ivyshy@gmail.com";
+const form = document.getElementById("contactForm");
+const box = document.getElementById("preview");
+
+function check(id, ok, msg) {
+  document.getElementById(id + "Err").textContent = ok ? "" : msg;
+  document.getElementById(id).classList.toggle("invalid", !ok);
+  return ok;
+}
+
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+  const v = id => document.getElementById(id).value.trim();
+
+  const results = [
+    check("cname", v("cname").length >= 2, "Please enter your name (at least 2 characters)."),
+    check("cemail", /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v("cemail")), "Please enter a valid email, like name@example.com."),
+    check("cphone", /^0[0-9]{9}$/.test(v("cphone")), "Phone must be 10 digits and start with 0."),
+    check("ctype", v("ctype") !== "", "Please choose a message type."),
+    check("cmsg", v("cmsg").length >= 10, "Your message must be at least 10 characters.")
+  ];
+
+  box.hidden = false;
+  box.innerHTML = "";
+
+  if (!results.every(Boolean)) {
+    box.className = "response error-box";
+    box.textContent = "Please fix the errors marked in red and try again.";
+    return;
+  }
+
+  const subject = v("ctype") + " from " + v("cname");
+  const body = "Name: " + v("cname") + "\nEmail: " + v("cemail") +
+               "\nPhone: " + v("cphone") + "\nType: " + v("ctype") + "\n\n" + v("cmsg");
+
+  box.className = "response";
+  const thanks = document.createElement("p");
+  thanks.textContent = "Thank you, " + v("cname") + "! Your message has been prepared. Click Send Email below to send it to us. We will reply within 2 working days.";
+
+  const pre = document.createElement("pre");
+  pre.textContent = "To: " + RECIPIENT + "\nSubject: " + subject + "\n\n" + body;
+
+  const send = document.createElement("a");
+  send.className = "btn";
+  send.textContent = "Send Email";
+  send.href = "mailto:" + RECIPIENT + "?subject=" + encodeURIComponent(subject) +
+              "&body=" + encodeURIComponent(body);
+
+  box.append(thanks, pre, send);
+  form.reset();
+});
+</script>
+    </div>
+    </div> 
+</body>
+</html>

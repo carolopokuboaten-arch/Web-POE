@@ -1,0 +1,252 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Menu |Cream & Batter Cakes,Cupcakes & More</title>
+    <meta name="description" content="Explore our delicious menu of cakes, cupcakes, and pastries.">
+    <link rel="canonical"href="">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+ <!-- Lightbox overlay: hidden until a gallery picture is clicked -->
+<div id="lightbox" class="lightbox">
+  <span class="close">&times;</span>
+  <img id="lightbox-img" alt="">
+</div>
+
+
+<header>
+    <div class="header-wrapper">
+        <h1 class="logo">Cream and Batter</h1>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="menu.html">Menu</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="enquiry.html">Enquiry</a>
+        </nav>
+    </div>
+</header>
+<div class="menu-container">
+    <div class="menu column">
+        <h2>Cookies</h2>
+        <!-- Cookies (R40 per pack of 6) -->
+<li data-name="Chocolate Cookies (pack of 6)" data-price="40">Chocolate Cookies</li>
+<li data-name="Double Chocolate Cookies (pack of 6)" data-price="40">Double Chocolate Cookies</li>
+<li data-name="Butter & Sugar Cookies (pack of 6)" data-price="40">Butter & Sugar Cookies</li>
+
+
+    </div>
+    <div class="menu column">
+        <h2>Cakes (FROM R450-R2050)</h2>
+        <ul>
+    
+<li data-name="Lavish Celebration Cake" data-price="650">Lavish Celebration Cakes</li>
+<li data-name="Wedding Cake" data-price="1500-2050">Wedding Cakes</li>
+<li data-name="Birthday Cake" data-price="450">Birthday Cakes</li>
+<li data-name="Custom Design Cake" data-price="Prices vary">Custom Design Cakes</li>
+            
+        </ul>
+    </div>
+    <div class="menu column">
+        <h2>Pastries</h2>
+        <ul>
+ <li data-name="Cinnamon Rolls" data-price="10">Cinnamon Rolls R10-R80</li>
+<li data-name="Cannoli (3)" data-price="25">Cannoli R25 FOR 3</li>
+<li data-name="Milk Tart" data-price="10">Milk Tart R10-R140</li>
+<li data-name="Churros (3)" data-price="21">Churros R21 FOR 3</li>
+<li data-name="Muffins (3)" data-price="20">Muffins R20 FOR 3</li>
+
+        </ul>
+    </div>
+
+
+<div class="menu column">
+    <h2>Cupcakes</h2>
+    <ul>
+<li data-name="Chocolate Fudge Cupcake" data-price="25">Chocolate Fudge Cupcakes R25</li>
+<li data-name="Vanilla Bean Cupcake" data-price="35">Vanilla Bean Cupcakes R35</li>
+<li data-name="Assorted Flavour Cupcake" data-price="25">Assorted Flavour Cupcakes R25-45</li>
+     
+    <p Note:Party packs prices vary depending on the number of cupcakes ordered. </p>
+    </ul><br>
+    <div class="lightbox-gallery">
+        <img src="chocolate-chip.jpg"alt="Cookies"
+        class="gallery-thumb" data-full="Cookies-large.jpg">
+
+        <img src="Red-velvet-cupcakes.jpg" alt="Cupcakes"
+        class="gallery-thumb" data-full="Cupcakes-large.jpg">
+
+        <img src="wedding-cake.jpg" alt="Cakes"
+        class="gallery-thumb" data-full="Cakes-large.jpg">
+
+        <img src="cup-cakes.jpg" alt="Cupcakes"
+        class="gallery-thumb" data-full="Cupcakes-large.jpg">
+
+        <img src="muffins.jpg" alt="Muffins"
+        class="gallery-thumb" data-full="Muffins-large.jpg">
+
+        <img src="cinnamon-rolls.jpg" alt="Cinnamon Rolls"
+        class="gallery-thumb" data-full="Cinnamon-Rolls-large.jpg">
+
+    </div>
+    
+    <!--Lightbox overlay-->
+    <div id="lightbox" class="lightbox">
+     <span class="close"> &times;</span> 
+     <img id="lightbox-img" alt=""> 
+    </div>
+
+    
+    <p class ="note">Note: We also have brownies available.</p>
+    <p>For custom orders or special requests, please contact us through our Enquiry page and email us.</p>
+
+   <script>
+  // Lightbox feature: enlarge a gallery picture when clicked
+  const thumbs = document.querySelectorAll('.gallery-thumb');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const closeBtn = document.querySelector('.close');
+
+  // Open: show the clicked picture large
+  thumbs.forEach(thumb => {
+    thumb.addEventListener('click', () => {
+      lightboxImg.src = thumb.src;
+      lightboxImg.alt = thumb.alt;
+      lightbox.style.display = 'flex';
+    });
+  });
+
+  // Close: x button, background click, or Esc key
+  function closeLightbox() { lightbox.style.display = 'none'; }
+  closeBtn.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', closeLightbox);
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLightbox();
+  });
+</script>
+<button id="cartToggle" class="cart-toggle" aria-label="Open cart">🛒 <span id="cartCount">0</span></button>
+
+<aside id="cartPanel" class="cart-panel" hidden>
+  <h2>Your Cart</h2>
+  <ul id="cartList"></ul>
+  <p id="cartTotal"></p>
+  <p class="cart-note">YOUR total. Need to add more items or go to the enquiry page.</p>
+  <a href="enquiry.html" class="cart-action cart-link">Checkout: send enquiry</a>
+  <button id="cartClear" class="cart-clear">Clear cart</button>
+</aside>
+
+<script>
+(function () {
+    var cart = {};
+try { cart = JSON.parse(localStorage.getItem('cbCart') || '{}'); } catch (e) {}
+  var cartPanel = document.getElementById('cartPanel');
+  var cartList = document.getElementById('cartList');
+  var cartTotal = document.getElementById('cartTotal');
+  var cartCount = document.getElementById('cartCount');
+
+  //  "Add to cart" button to every item with data-price
+  document.querySelectorAll('li[data-price]').forEach(function (li) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'add-btn';
+    b.textContent = 'Add to cart';
+    b.addEventListener('click', function () {
+      var name = li.dataset.name;
+      var price = Number(li.dataset.price);
+      if (!cart[name]) cart[name] = { price: price, qty: 0 };
+      cart[name].qty++;
+      render();
+      b.textContent = 'Added ✓';
+      setTimeout(function () { b.textContent = 'Add to cart'; }, 800);
+    });
+    li.appendChild(b);
+  });
+
+  function render() {
+    cartList.innerHTML = '';
+    var total = 0, count = 0;
+    Object.keys(cart).forEach(function (name) {
+      var item = cart[name];
+      total += item.price * item.qty;
+      count += item.qty;
+
+      var row = document.createElement('li');
+      var label = document.createElement('span');
+      label.textContent = name + ' x' + item.qty + ' = R' + (item.price * item.qty);
+
+      var minus = document.createElement('button');
+      minus.textContent = '−';
+      minus.setAttribute('aria-label', 'Remove one ' + name);
+      minus.addEventListener('click', function () {
+        item.qty--;
+        if (item.qty <= 0) delete cart[name];
+        render();
+      });
+
+      var plus = document.createElement('button');
+      plus.textContent = '+';
+      plus.setAttribute('aria-label', 'Add one ' + name);
+      plus.addEventListener('click', function () { item.qty++; render(); });
+
+      row.append(label, minus, plus);
+      cartList.appendChild(row);
+    });
+    if (count === 0) {
+      var empty = document.createElement('li');
+      empty.textContent = 'Your cart is empty.';
+      cartList.appendChild(empty);
+    }
+    cartTotal.textContent = 'Total: R' + total;
+    cartCount.textContent = count;
+    try { localStorage.setItem('cbCart', JSON.stringify(cart)); } catch (e) {}
+  }
+
+  document.getElementById('cartToggle').addEventListener('click', function () {
+    cartPanel.hidden = !cartPanel.hidden;
+  });
+  document.getElementById('cartClear').addEventListener('click', function () {
+    cart = {};
+    render();
+  });
+  document.getElementById('cartEmail').addEventListener('click', function () {
+    var names = Object.keys(cart);
+    if (names.length === 0) { alert('Your cart is empty. Add something first.'); return; }
+    var body = 'Hello Cream & Batter, I would like to order:\n\n';
+    var total = 0;
+    names.forEach(function (n) {
+      body += n + ' x' + cart[n].qty + ' = R' + (cart[n].price * cart[n].qty) + '\n';
+      total += cart[n].price * cart[n].qty;
+    });
+    body += '\nEstimated total: R' + total + '\n\nMy name and phone number: ';
+    window.location.href = 'mailto:ivyshy@gmail.com?subject=' +
+      encodeURIComponent('Order from the website') + '&body=' + encodeURIComponent(body);
+  });
+
+  render();
+})();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enquiry| Order Custom Cakes & Treats at Cream & Batter</title>
+    <meta name="description" content="Enquire about prices, cakes and custom orders at Cream and Batter. Send us your details for pricing and availability.">
+    <link rel="canonical"href="">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="enquiry-header">
+        <div class="header-wrapper">
+<h1 class ="logo">Cream and Batter </h1>
+<nav class ="main-nav">
+    <a href="index.html">Home</a>
+    <a href="menu.html">Menu</a>
+    <a href="about.html">About Us</a>   
+<a href="contact.html">Contact Us</a>
+<a href="enquiry.html">Enquiry</a>
+
+</nav>
+     </div>
+     </header>
+     
+     <div class="enquiry-box">
+    <div class="accordion">
+     <div class="accordion-item">
+    <button class="accordion-btn">Our opening hours</button>
+    <div class="accordion-content">
+<p> Monday-Friday:8:00am-5:30pm <br> Saturday:9:00-3:00pm <br> Sunday: Closed</p>
+    </div>
+    </div>
+
+    <div class="accordion-item">
+        <button class="accordion-btn"> We take custom orders <span style="font-size:20px;">&#128522;</span></button>
+        <div class ="accordion-content">
+            <p>We love creating custom cakes and treats for birthdays , wedding and special occasions. 
+            Just fill the enquiry form with your details.
+            </p>
+    </div>
+    </div>
+    </div>
+    <h2>Make your order!</h2>
+    <ul>
+        <li>Price ranges for different cakes and treats</li>
+        <li>Custom order details and design options</li>
+        <li>Negotiating larger orders or special requests</li>
+        <li>Questions about delivery and collection</li>
+        <li>Feedback or concerns about a past order</li>
+    </ul>
+    <div id="cartSummary" class="response" hidden>
+  <h3>Your cart</h3>
+  <ul id="cartItems"></ul>
+  <p id="cartSum"></p>
+</div>
+
+<form id="enquiryForm" novalidate>
+  <label for="name">Full name</label>
+  <input type="text" id="name">
+  <div class="error" id="nameErr"></div>
+
+  <label for="email">Email</label>
+  <input type="email" id="email">
+  <div class="error" id="emailErr"></div>
+
+  <label for="phone">Phone (10 digits)</label>
+  <input type="tel" id="phone" maxlength="10">
+  <div class="error" id="phoneErr"></div>
+
+  <label for="product">Product</label>
+  <select id="product">
+  <option value="">-- choose --</option>
+  <optgroup label="Cookies (packs)">
+    <option value="1">Chocolate Cookies - pack of 6</option>
+    <option value="2">Classic Butter Cookies - pack of 6</option>
+  </optgroup>
+  <optgroup label="Pastries">
+    <option value="3">Churros (4)</option>
+    <option value="4">Cinnamon Rolls</option>
+  </optgroup>
+  <optgroup label="Cupcakes">
+    <option value="5">Vanilla Bean Cupcakes</option>
+    <option value="6">Assorted Flavour Cupcakes</option>
+    <option value="7">Chocolate Fudge Cupcakes</option>
+  </optgroup>
+  <optgroup label="Cakes">
+    <option value="8">Birthday Cake</option>
+    <option value="9">Wedding Cake</option>
+  </optgroup>
+</select>
+  <div class="error" id="productErr"></div>
+
+  <label for="qty">Quantity</label>
+  <input type="number" id="qty" min="1" max="100">
+  <div class="error" id="qtyErr"></div>
+
+  <label for="date">Date needed</label>
+  <input type="date" id="date">
+  <div class="error" id="dateErr"></div>
+
+  <button class="btn" type="submit">Send Order</button>
+</form>
+<div id="result" class="response" hidden></div>
+<br>
+   
+
+    
+    </form>
+    <br>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const buttons = document.querySelectorAll('.accordion-btn');
+
+  buttons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      this.classList.toggle('active');
+      this.nextElementSibling.classList.toggle('open');
+    });
+  });
+});
+</script>
+<script src="enquiry.js"></script>
+<script>
+const prices = {1:40, 2:40, 3:24, 4:30, 5:25, 6:35, 7:25, 8:450, 9:450};
+const form = document.getElementById("enquiryForm");
+const box = document.getElementById("result");
+const summary = document.getElementById("cartSummary");
+document.getElementById("date").min = new Date().toISOString().split("T")[0];
+
+let cart = {};
+try { cart = JSON.parse(localStorage.getItem("cbCart") || "{}"); } catch (e) {}
+let cartNames = Object.keys(cart);
+let cartSum = 0;
+
+function showCart() {
+  const list = document.getElementById("cartItems");
+  list.innerHTML = "";
+  cartSum = 0;
+  cartNames.forEach(function (n) {
+    const li = document.createElement("li");
+    li.textContent = n + " x" + cart[n].qty + " = R" + (cart[n].price * cart[n].qty);
+    list.appendChild(li);
+    cartSum += cart[n].price * cart[n].qty;
+  });
+  document.getElementById("cartSum").textContent = "Estimated total: R" + cartSum;
+  summary.hidden = cartNames.length === 0;
+}
+showCart();
+
+function check(id, ok, msg) {
+  document.getElementById(id + "Err").textContent = ok ? "" : msg;
+  document.getElementById(id).classList.toggle("invalid", !ok);
+  return ok;
+}
+
+form.addEventListener("submit", async function (e) {
+  e.preventDefault();
+  const v = id => document.getElementById(id).value.trim();
+  const hasCart = cartNames.length > 0;
+  const today = new Date(); today.setHours(0, 0, 0, 0);
+  const days = (new Date(v("date") + "T00:00") - today) / 86400000;
+  const qty = Number(v("qty"));
+
+  const results = [
+    check("name", v("name").length >= 2, "Please enter your name (at least 2 characters)."),
+    check("email", /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v("email")), "Please enter a valid email, like name@example.com."),
+    check("phone", /^0[0-9]{9}$/.test(v("phone")), "Phone must be 10 digits and start with 0."),
+    check("product", hasCart || v("product") !== "", "Please choose a product or add items on the Menu page."),
+    check("qty", hasCart || (Number.isInteger(qty) && qty >= 1 && qty <= 100), "Quantity must be a whole number from 1 to 100."),
+    check("date", v("date") !== "" && days >= 0, "Please choose today or a future date.")
+  ];
+
+  box.hidden = false;
+  if (!results.every(Boolean)) {
+    box.className = "response error-box";
+    box.textContent = "Please fix the errors marked in red and try again.";
+    return;
+  }
+
+  let orderText, total, hasCake;
+  if (hasCart) {
+    orderText = cartNames.map(n => n + " x" + cart[n].qty).join(", ");
+    total = cartSum;
+    hasCake = cartNames.some(n => /cake/i.test(n) && !/cupcake/i.test(n));
+  } else {
+    const productName = document.getElementById("product").selectedOptions[0].textContent;
+    orderText = qty + " x " + productName;
+    total = prices[v("product")] * qty;
+    hasCake = v("product") === "8" || v("product") === "9";
+  }
+  const needsNotice = hasCake ? days < 3 : (!hasCart && qty > 12 && days < 2);
+
+  box.className = "response";
+  box.textContent = "Sending...";
+  try {
+    await fetch("https://jsonplaceholder.typicode.com/posts", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({name: v("name"), email: v("email"), phone: v("phone"), order: orderText})
+    });
+    box.textContent = "Thank you, " + v("name") + "! Your enquiry for " + orderText +
+      " has been sent. Estimated cost: R" + total + ". " +
+      (needsNotice
+        ? "Cakes need 3 days' notice (2 days for large orders), so please choose a later date."
+        : "Good news: this is available on your chosen date.") +
+      " We will contact you on " + v("phone") + " or " + v("email") + " to confirm.";
+    try { localStorage.removeItem("cbCart"); } catch (e) {}
+    cart = {}; cartNames = []; showCart();
+    form.reset();
+  } catch (err) {
+    box.className = "response error-box";
+    box.textContent = "Something went wrong. Please check your internet and try again.";
+  }
+});
+      
+</script>
+
+</body>
+</html>

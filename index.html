@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cream & Batter |Delightful Treats,Tarts & Pasties</title>
+    <meta name="description" content="Cream and Batter bakes fresh cupcakes, churros and cakes.Browse our menu and place an enquiry today.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body style="background-color: #EFD9B4;"> 
+  <header>
+        <div class="header-wrapper">
+            <h1 class="logo">Cream and Batter</h1>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="menu.html">Menu</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact Us</a>
+                <a href="enquiry.html">Enquiry</a>
+                </nav>
+        </div>
+   
+    </header>
+    
+
+<div class="pink-box">
+<div class="toolbar">
+  <input type="search" id="search" placeholder="Search cupcakes, cakes, churros..." aria-label="Search products">
+  <select id="sort" aria-label="Sort products">
+    <option value="default">Sort by latest</option>
+    <option value="low">Price: low to high</option>
+    <option value="high">Price: high to low</option>
+    <option value="az">Name: A-Z</option>
+  </select>
+</div>
+<p id="count"></p>
+ 
+<div class="gallery-container">
+<div class="bow-header">
+<h2>Delightful Treats</h2>
+</div>
+
+<!-- What the bakery offers with images -->
+
+<div class="gallery-grid">
+    <div class ="gallery-item" data-name="Chocolate Fudge Cupcakes" data-price="25">
+     <img src ="Chocolate-Fudge-Cupcakes.jpg" alt="Chocolate Fudge Cupcakes" width="300" height="300">
+     </div>
+     <div class="gallery-item" data-name="Healthy Blueberry Muffins" data-price="35">
+     <img src="Healthy-Blueberry-Muffins.jpg" alt="Healthy Blueberry Muffins" width="300" height="300">
+     </div>
+    <div class="gallery-item" data-name="Assorted Flavour Cupcakes" data-price="25-45">
+     <img src="caramel-cupcake.jpg" alt="Cupcakes" width="300" height="300">
+    </div>
+<div class="gallery-item" data-name="Fresh Butter Cookies" data-price="40">
+    <img src="fresh-butter-cookies.jpg" alt="Fresh Butter Cookies" width="300" height="300">
+</div>
+<div class ="gallery-item" data-name="Churros" data-price="21 for 3">
+    <img src="churros.jpg" alt="Churros" width="300" height="300">
+
+</div>
+<div class="gallery-item" data-name="Eggless Chocolate Cookies" data-price="40">
+    <img src="Eggless-Chocolate-Cookies.jpg" alt="Eggless Chocolate Cookies" width="300" height="300">
+</div>
+<div class="gallery-item" data-name="Cinnamon Rolls" data-price="10-80">
+    <img src="Cinnamon-Buns.jpg" alt="Cinnamon Rolls" width="300" height="300">
+</div>
+<div class="gallery-item" data-name="Cannoli" data-price="25">
+    <img src="Cannoli.jpg" alt="Cannoli" width="300" height="300">
+</div>
+</div>
+</div>
+
+<br>
+<br>
+<div class = "bow-header">
+
+</div>
+<div class="gallery-grid">
+<div class="gallery-item" data-name="Chocolate Cake" data-price="650">
+<img src="celebration-cake.jpg" alt="Chocolate Cake" width="100" height="200">
+</div>
+<div class="gallery-item" data-name="Chocolate Coma Cake" data-price="500">
+<img src="Chocolate-coma-cake.jpg "  alt ="Birthday Cake" width="300" height="300">
+</div>
+<div class="gallery-item" data-name="40th Birthday Bento Cake" data-price="450">
+<img src="40th-birthday-bento-cake-and-cupcakes.jpg"  alt ="40th Birthday Bento Cake" width="200" height="300">
+</div>
+</div>
+</div>
+</div>
+
+ <div class="welcome-box">
+    <h2 id="welcome-heading">WELCOME!</h2>
+    <p id="welcome-message"> Anything your hearts desires</p>  
+    <button id="change-btn">Click to see whats on special !</button>  
+    </div>
+
+
+
+</div>
+
+<br>
+<br>
+
+<br>
+<br> <!-- Section allows people browse freely -->
+
+<!-- Footer -->
+<footer>
+<div class="footer-section talk-to-us">
+
+<div class="deco-right">
+
+</div>
+<h3>Talk to Us</h3>
+<p>Do not miss out , follow our latest treats and updates:</p>
+<ul>
+<li>Instagram: @creamandbatter <span class="deco-symbol">  &#127856;    </span> </li>
+<li>Threads: @creamandbatter<span class="deco-symbol">   &#127850;   </span> </li>
+<li>TikTok: @creamandbatter <span class="deco-symbol">   &#127849;   </span> </li>
+</div>  
+   
+</div>
+
+</ul>
+
+<br>
+<br>
+<div class="footer-section terms">
+
+
+<h4>Terms & Conditions</h4>
+<p> Please  vist our enquire  page for more details.</p>
+<h5>click the menu button to see the price range</h5>
+<p>2026 Cream & Batter. All rights reserved.</p>
+</div>
+
+</footer>
+<script>
+const heading = document.getElementById('welcome-heading');
+const message = document.getElementById('welcome-message');
+const btn = document.getElementById('change-btn');
+let isShowingSpecial=false;
+btn.addEventListener('click', function() {
+    if(!isShowingSpecial) {
+    heading.textContent = "✨ Today's Special ✨";
+    message.textContent = "10% off all chocolate cupcakes this week!";
+    this.textContent="Go back ";
+    isShowingSpecial=true;
+    } else{
+        heading.textContent="Fresh treats baked with desires";
+
+        this.textContent="Click to see whats on special!"
+        isShowingSpecial=false;
+
+    }
+});
+</script>
+<script>
+const search = document.getElementById('search');
+const sort = document.getElementById('sort');
+const count = document.getElementById('count');
+const grids = document.querySelectorAll('.gallery-grid');
+const items = [...document.querySelectorAll('.gallery-item')];
+
+function update() {
+  const term = search.value.trim().toLowerCase();
+  let shown = 0;
+  items.forEach(i => {
+    const ok = i.dataset.name.toLowerCase().includes(term);
+    i.style.display = ok ? '' : 'none';
+    if (ok) shown++;
+  });
+  grids.forEach(g => {
+    const list = [...g.querySelectorAll('.gallery-item')];
+    if (sort.value === 'low') list.sort((a, b) => a.dataset.price - b.dataset.price);
+    if (sort.value === 'high') list.sort((a, b) => b.dataset.price - a.dataset.price);
+    if (sort.value === 'az') list.sort((a, b) => a.dataset.name.localeCompare(b.dataset.name));
+    if (sort.value !== 'default') list.forEach(i => g.appendChild(i));
+  });
+  count.textContent = shown ? '' : 'No products match your search.';
+
+}
+search.addEventListener('input', update);
+sort.addEventListener('change', update);
+update();
+</script>
+<div id="zoomOverlay" class="zoom-overlay" hidden>
+  <span class="zoom-close">&times;</span>
+  <img id="zoomImg" src="" alt="">
+  <p id="zoomCaption"></p>
+</div>
+
+<script>
+const zoomOverlay = document.getElementById('zoomOverlay');
+const zoomImg = document.getElementById('zoomImg');
+const zoomCaption = document.getElementById('zoomCaption');
+
+document.querySelectorAll('.gallery-item img').forEach(function (img) {
+  img.style.cursor = 'zoom-in';
+  img.addEventListener('click', function () {
+    zoomImg.src = img.src;
+    zoomImg.alt = img.alt;
+    zoomCaption.textContent = img.alt;
+    zoomOverlay.hidden = false;
+  });
+});
+
+function closeZoom() {
+  zoomOverlay.hidden = true;
+  zoomImg.removeAttribute('src');
+}
+zoomOverlay.addEventListener('click', closeZoom);
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape') closeZoom();
+});
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
